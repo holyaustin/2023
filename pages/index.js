@@ -24,9 +24,12 @@ export default function Home() {
         <main className="h-[calc(100vh-36px)]">
           <BetOption />
         </main>
-        <footer className="h-10 flex text-center justify-center border-t-2 pt-1 text-white cursor-pointer">
-          <span onClick={() => setTrading(true)}>Buy Game Tokens</span> | Sell
+        <footer className="h-20 flex text-center justify-center border-t-2 pt-1 text-white cursor-pointer">
+          <span onClick={() => setTrading(true)}>Get Game Tokens</span> | Sell
           Game Tokens
+          <div className="text-center py-10">
+            2023 Games (c) allright reserved
+          </div>
         </footer>
       </div>
       </div>

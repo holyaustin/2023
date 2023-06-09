@@ -24,22 +24,22 @@ const BetOption = () => {
 
   
   const updateBetAmount = (type) => {
-    if (type == "+" && betAmount + 500 > gameToken) {
+    if (type == "+" && betAmount + 1 > gameToken) {
       alert("Bet amount cannot be more than token balance");
       return;
     }
-    if (type == "-" && betAmount - 500 < 500) {
-      alert("Bet amount cannot be less than 500");
+    if (type == "-" && betAmount - 1 < 1) {
+      alert("Bet amount cannot be less than 1");
       return;
     }
 
-    type == "+" ? setBetAmount(betAmount + 500) : setBetAmount(betAmount - 500);
+    type == "+" ? setBetAmount(betAmount + 1) : setBetAmount(betAmount - 1);
   };
 
   const handleApprove = async () => {
     if (betAmount > gameToken) {
       alert(
-        "You do not have enough tokens to make this bet, buy some more tokens to play"
+        "You do not have enough tokens to make this bet, Get some more to play"
       );
       return;
     }
@@ -67,7 +67,7 @@ const BetOption = () => {
         Select Bet Option
       </div>
 
-      <div className="flex justify-center ">
+      <div className="flex justify-center font-black">
         
         <div
           className={`cursor-pointer p-3 m-3 flex justify-around items-center flex-col rounded-xl h-24 w-40 my-5 eth-card .white-glassmorphism ${
@@ -89,7 +89,7 @@ const BetOption = () => {
           onClick={() => setSelectedOption(7)}
         >
           <div>Win 3x</div>
-          <div className="sm:text-2xl">20</div>
+          <div className="sm:text-2xl font-black ">20</div>
           <div>Win {betAmount * 3}</div>
         </div>
 
@@ -114,7 +114,7 @@ const BetOption = () => {
           onClick={() => setSelectedOption(7)}
         >
           <div>Win 3x</div>
-          <div className="sm:text-2xl">23</div>
+          <div className="sm:text-2xl font-black">23</div>
           <div>Win {betAmount * 3}</div>
         </div>
 

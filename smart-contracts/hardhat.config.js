@@ -13,12 +13,7 @@ module.exports = {
   solidity: "0.8.7",
   networks: {
     hardhat: { chainId: 1337 },
-    // ropsten: {
-    //   url: `https://ropsten.infura.io/v3/${PROJECT_ID}`,
-    //   accounts: PRIVATE_KEYS.split(",")
-    // },
     mumbai: {
-      // url: `https://polygon-mumbai.infura.io/v3/${PROJECT_ID}`,
       url: ALCHEMY_MUMBAI_URL,
       accounts: PRIVATE_KEYS.split(",")
     }

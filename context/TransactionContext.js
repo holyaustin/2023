@@ -17,8 +17,8 @@ export const TransactionProvider = ({ children }) => {
   const [gameToken, setGameToken] = useState(0);
   const [trading, setTrading] = useState(false);
   const [approved, setApproved] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(7);
-  const [betAmount, setBetAmount] = useState(500);
+  const [selectedOption, setSelectedOption] = useState(23);
+  const [betAmount, setBetAmount] = useState(1);
 
   // const [approved, setApproved] = useState(false);
   useEffect(() => {
