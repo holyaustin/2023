@@ -11,4 +11,12 @@ ConsumerV3 0x002064a4cA5db76F647Cd88C22A2105F1Ac71525
 
 2023 Game Contract with VRF 0x2969C49548ca6C90C8390e2D373E6f2a1e51d64B
 
+#### Technologies used
+Polygon Mumbai Testnet
+
+Chainlik VRF, DataFeed, Automation
+
+Verse Token
+
+Space and Time
 
