@@ -103,6 +103,15 @@ const Header = () => {
           <Image src={ImgCoins} alt="" />
           Token balance: {gameToken}
         </div>
+
+
+        <a href="https://buy.bitcoin.com/verse/" target="_blank" rel="noreferrer" style={{textDecoration: "none"}}>
+              <button className="font-bold mx-5 bg-red-800 text-white text-base rounded p-2 shadow-lg">
+                Buy Verse Token
+              </button>
+              </a>
+
+
         <div className="ml-auto py-2 px-4">
           {!address && (
             <button
