@@ -6,11 +6,17 @@ import BetOption from "./components/BetOption";
 // import { switchNetworkMumbai } from "./utils/switchNetworkMumbai";
 import { useNetwork, useAddress } from "@thirdweb-dev/react";
 import TransactionProvider from "../context/TransactionContext";
+import background from "../public/images/2023.png";
 
 export default function Home() {
   const { trading, setTrading } = useContext(TransactionProvider);
   return (
     <>
+   <div style={{ 
+      backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/e/e0/Grass_at_a_lawn_with_morning_dew_02.jpg")`,
+      height: "100vh",
+      }}>
+
       <div className="flex flex-col h-screen justify-between gradient-bg-welcome ">
         <header>
           <Header />
@@ -22,6 +28,7 @@ export default function Home() {
           <span onClick={() => setTrading(true)}>Buy Game Tokens</span> | Sell
           Game Tokens
         </footer>
+      </div>
       </div>
     </>
   );

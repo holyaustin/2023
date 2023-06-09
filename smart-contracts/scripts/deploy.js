@@ -14,7 +14,7 @@ async function main() {
 
   const LuckySevenGame = await hre.ethers.getContractFactory("LuckySevenGame");
   const l7Game = await LuckySevenGame.deploy(
-    "0x33b803a9b97cd91ca45fa8572599dc3ec03a6195"
+    "0xdf1709F54057752539aB22E6524a8B0d82Ef60B9"
   );
   await l7Game.deployed();
   console.log("LuckySevenGame deployed to:", l7Game.address);

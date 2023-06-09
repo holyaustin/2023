@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import Image from "next/image";
-
-// Installation: https://github.com/alchemyplatform/alchemy-web3
-
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
-
 import { useNetwork, useAddress } from "@thirdweb-dev/react";
 
 // Using HTTPS
@@ -21,9 +17,6 @@ const Avatar = () => {
       const nfts = await web3.alchemy.getNfts({
         owner: `${address}`,
       });
-      // const tokenBalance = await web3.alchemy.getTokenBalances(address, [
-      //   "0xf2a914dcad185866d451c87c3268855f1590b8e1"
-      // ]);
       setCollection(nfts);
       // console.log(tokenBalance);
     })();
