@@ -1,27 +1,30 @@
 require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-etherscan");
-require("dotenv").config();
-const {
-  PROJECT_ID,
-  PRIVATE_KEYS,
-  ETHERSCAN_KEY,
-  POLYGONSCAN_KEY,
-  ALCHEMY_MUMBAI_URL
-} = process.env;
+require('dotenv').config();
+console.log(process.env.PRIVATE_KEY);
 
 module.exports = {
-  solidity: "0.8.7",
+  defaultNetwork: "hardhat",
   networks: {
-    hardhat: { chainId: 1337 },
-    mumbai: {
-      url: ALCHEMY_MUMBAI_URL,
-      accounts: PRIVATE_KEYS.split(",")
+    hardhat: {
+      chainId: 1337
+    },
+    xinfin: {
+      url: 'https://erpc.xinfin.network',
+      accounts: process.env.PRIVATE_KEY,
+    },
+    apothem: {
+      url: 'https://erpc.apothem.network', 
+      accounts: process.env.PRIVATE_KEY,
+    },
+
+  },
+  solidity: {
+    version: "0.8.16",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
     }
-  },
-  paths: {
-    artifacts: "../artifacts"
-  },
-  etherscan: {
-    apiKey: POLYGONSCAN_KEY
   }
 };

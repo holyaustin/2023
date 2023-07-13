@@ -1,11 +1,5 @@
 export const providerUrl =
   "https://polygon-mumbai-bor.publicnode.com";
-
-import priceConsumerV3Artifacts from "../artifacts/contracts/PriceConsumerV3.sol/PriceConsumerV3.json";
-export const priceConsumerV3Abi = priceConsumerV3Artifacts.abi;
-export const priceConsumerV3Address =
-  "0x002064a4cA5db76F647Cd88C22A2105F1Ac71525";
-//0x28880B24D45bf663D344b899f4ac66B210BBaF51
 import gameTokenArtifacts from "../artifacts/contracts/GameToken.sol/GameToken.json";
 export const gameTokenAbi = gameTokenArtifacts.abi;
 export const gameTokenAddress = "0xf628202caf9d10cebec6250980bf01fba2b864ce";

@@ -1,5 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.16;
+
+/**
+ * @title XRC20 Token
+ * @dev This is the a XinFin Network Compatible XRC20 token.
+ */
+
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
@@ -10,3 +16,4 @@ contract GameToken is ERC20 {
         _mint(msg.sender, 1000000 * (10**uint256(decimals())));
     }
 }
+

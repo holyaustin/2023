@@ -28,7 +28,7 @@ export default function Home() {
           <span onClick={() => setTrading(true)}>Get Game Tokens</span> | Sell
           Game Tokens
           <div className="text-center py-10">
-            2023 Games (c) allright reserved
+            2023 Lucky Games (c) allright reserved
           </div>
         </footer>
       </div>
