@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import TransactionProvider from "../../context/TransactionContext";
 import switchNetwork from "../../utils/switchNetwork";
-
+import Trade from "./Trade";
 import {
   useMetamask,
   useWalletConnect,
@@ -17,6 +17,7 @@ import ImgCoins from "../assets/coins4.jpg";
 import shortenAddress from "../../utils/shortenAddress";
 
 const Header = () => {
+  const { trading, setTrading } = useContext(TransactionProvider);
   // const connectWithCoinbaseWallet = useCoinbaseWallet();
   const connectWithMetamask = useMetamask();
   // const connectWithWalletConnect = useWalletConnect();
@@ -26,7 +27,7 @@ const Header = () => {
   const { gameToken, updateGameToken, setCurrentAccount } =
     useContext(TransactionProvider);
 
-  console.log("ADDRESS:", address);
+  // console.log("ADDRESS:", address);
 
   useEffect(() => {
     if (!address) return;
@@ -35,6 +36,10 @@ const Header = () => {
       await updateGameToken(address);
     })();
   }, [address]);
+
+  const buyGameToken = () => {
+    Trade();
+  }
 
   if (!address) {
     return (
@@ -64,28 +69,27 @@ const Header = () => {
     );
   }
 
-  if (address && network[0].data.chain.id != 80001) {
+  if (address && network[0].data.chain.id != 51) {
     return (
       <>
         <div className="bg-black opacity-85 fixed w-full h-full z-50 grid grid-cols-1 content-center">
           <h1 className="text-center text-4xl font-bold text-gradient pb-4">
-            20 23 Games
+            2 0 2 3 Games
           </h1>
           <div className="text-center text-white">
             <div className="p-1">
-              You are connected to network {network[0].data.chain.name}
+              Wrong Network. You are connected to network {network[0].data.chain.name}
             </div>
             <div className="p-1">
-              Please switch to Polygon Testnet Mumbai to play this game.
+              Please switch to XDC Apothem Testnet to play this game.
             </div>
 
             <div className="p-2">
               <button
-                className="text-black cursor-pointer rounded-full px-3 py-1 space-x-2 bg-lime-200"
-                onClick={() => switchNetwork("PolygonTestnetMumbai", "0x13881")}
+                className="text-black cursor-pointer rounded-full px-7 py-7 space-x-2 bg-lime-200 mt-7"
+                onClick={() => switchNetwork("XDCApothemNetwork", "0x33")}
               >
-                Switch to Mumbai Testnet
-              </button>
+                Switch to XDC Apothem Testnet              </button>
             </div>
           </div>
         </div>
@@ -101,16 +105,32 @@ const Header = () => {
           onClick={async () => await updateGameToken(address)}
         >
           <Image src={ImgCoins} alt="" />
-          Token balance: {gameToken}
+          Game Token balance: {gameToken}
         </div>
 
 
-        <a href="https://buy.bitcoin.com/verse/" target="_blank" rel="noreferrer" style={{textDecoration: "none"}}>
+        <a href="https://simpleswap.io/coins/xdc-network" target="_blank" rel="noreferrer" style={{textDecoration: "none"}}>
               <button className="font-bold mx-5 bg-red-800 text-white text-base rounded p-2 shadow-lg">
-                Buy Verse Token
+                Buy XDC
               </button>
               </a>
 
+              <a href="https://app.xdcswaps.com/?=home" target="_blank" rel="noreferrer" style={{textDecoration: "none"}}>
+              <button className="font-bold mx-5 bg-red-800 text-white text-base rounded p-2 shadow-lg">
+                Swap Token
+              </button>
+        </a>
+        
+        <a rel="noreferrer" style={{textDecoration: "none"}}>
+          <button className="font-bold mx-5 bg-red-800 text-white text-base rounded p-2 shadow-lg"
+            onClick={() => setTrading(true)}
+
+          >
+                Get Game Token
+        </button>
+      </a>
+      
+        <span onClick={() => setTrading(true)}>Get Game Tokens</span> 
 
         <div className="ml-auto py-2 px-4">
           {!address && (

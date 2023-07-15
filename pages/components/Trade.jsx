@@ -2,24 +2,25 @@ import React, { useState, useContext, useEffect } from "react";
 import TransactionProvider from "../../context/TransactionContext";
 import { useNetwork } from "@thirdweb-dev/react";
 import { useAddress } from "@thirdweb-dev/react";
+import { ethers } from "ethers";
 // import { useToken } from "@thirdweb-dev/react";
 import {
-  priceConsumerV3Abi,
-  priceConsumerV3Address,
+  // priceConsumerV3Abi,
+  // priceConsumerV3Address,
   luckySevenGameAbi,
-  luckySevenGameAddress,
+  luckyGameAddress,
   providerUrl
 } from "../../utils/constants";
 
-import { ethers } from "ethers";
+console.log("luckyGameAddress", luckyGameAddress)
 
-const Trade = () => {
+const Trade = () => {setXdcToken
   const { trading, setTrading, updateGameToken, gameToken } =
     useContext(TransactionProvider);
   const network = useNetwork();
-  const [l7TokenPrice, setL7TokenPrice] = useState(0);
-  const [maticToken, setMaticToken] = useState(0);
-  const [l7Token, setL7Token] = useState(0);
+  const [LGTTokenPrice, setLGTTokenPrice] = useState(0);
+  const [xdcToken, setXdcToken] = useState(0);
+  const [LGTToken, setLGTToken] = useState(0);
   const [tokenBalance, setTokenBalance] = useState(0);
   const address = useAddress();
 
@@ -29,49 +30,55 @@ const Trade = () => {
       let balance = await provider.getBalance(address);
       balance = Math.round(ethers.utils.formatEther(balance) * 1e4) / 1e4;
       setTokenBalance(balance);
-      updateMaticToken(5);
+      updateXrcToken(10);
     })();
   }, [address]);
 
   useEffect(() => {
     (async () => {
       const provider = new ethers.providers.JsonRpcProvider(providerUrl);
-
+/**
       const priceConsumerV3 = new ethers.Contract(
         priceConsumerV3Address,
         priceConsumerV3Abi,
         provider
       );
-      let roundData = await priceConsumerV3.getLatestPrice();
-      roundData = Math.round((roundData / 1000000) * 1e2) / 1e2;
-      setL7TokenPrice(roundData);
-      setL7Token((Math.round(roundData * maticToken) * 1e4) / 1e4);
+ */
+      let roundData = 1;
+      // roundData = Math.round((roundData / 1000000) * 1e2) / 1e2;
+      console.log("roundData", roundData);
+      setLGTTokenPrice(roundData);
+      console.log("xdcToken", xdcToken);
+      setLGTToken((Math.round(roundData * xdcToken) * 1e4) / 1e4);
     })();
   }, [tokenBalance]);
 
-  const updateL7Token = (val) => {
-    setL7Token(val);
-    setMaticToken(Math.round((val / l7TokenPrice) * 10000) / 10000);
+  const updateLGTToken = (val) => {
+    setLGTToken(val);
+    setXdcToken(Math.round((val / LGTTokenPrice) * 10000) / 10000);
   };
 
-  const updateMaticToken = (val) => {
-    setMaticToken(val);
-    setL7Token(Math.round(l7TokenPrice * val * 10000) / 10000);
+  const updateXrcToken = (val) => {
+    setXdcToken(val);
+    setLGTToken(Math.round(LGTTokenPrice * val * 10000) / 10000);
   };
 
   const buyToken = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     const luckySevenGame = new ethers.Contract(
-      luckySevenGameAddress,
+      luckyGameAddress,
       luckySevenGameAbi,
       provider.getSigner()
     );
-    await luckySevenGame.buyToken(ethers.utils.parseEther(l7Token.toString()), {
+    await luckySevenGame.buyToken(ethers.utils.parseEther(LGTToken.toString()), {
       from: address,
-      value: ethers.utils.parseEther(maticToken.toString()),
+      value: ethers.utils.parseEther(xdcToken.toString()),
       gasLimit: 3000000
     });
+
+    alert("You have successfully purchased your LGT game token ");
+    console.log("You have successfully purchased your LGT game token ");
   };
 
   return (
@@ -82,29 +89,29 @@ const Trade = () => {
           X
         </span>
       </div>
-      <div className="rounded flex justify-between bg-slate-50 p-3">
+      <div className="rounded flex justify-between bg-slate-50 p-3 border-2">
         <input
           type="text"
-          className="border-0 text-xl"
-          value={maticToken}
-          onChange={(e) => updateMaticToken(e.target.value)}
+          className="border-1 text-xl"
+          value={xdcToken}
+          onChange={(e) => updateXrcToken(e.target.value)}
         />
         <div className="bg-slate-200 w-40 p-1 shadow-md rounded">
           <select className="bg-slate-200 w-full">
-            <option value="Matic" defaultValue={true}>
-              Matic
+            <option value="XDC" defaultValue={true}>
+              XDC
             </option>
           </select>
         </div>
       </div>
-      <div className="rounded flex justify-between bg-slate-50 p-3">
+      <div className="rounded flex justify-between bg-slate-50 p-3 ">
         <div></div>
         <div
           className="cursor-pointer"
-          onClick={() => updateMaticToken(tokenBalance)}
+          onClick={() => updateXrcToken(tokenBalance)}
         >
           Balance: {tokenBalance}
-          {tokenBalance != maticToken && (
+          {tokenBalance != xdcToken && (
             <span className="ml-2 text-xs px-2 bg-red-300 rounded-lg">Max</span>
           )}
         </div>
@@ -112,14 +119,14 @@ const Trade = () => {
 
       <div className="rounded flex justify-center bg-slate-50 "></div>
 
-      <div className="rounded flex justify-between bg-slate-50 p-3 mt-2">
+      <div className="rounded flex justify-between bg-slate-50 p-3 mt-2 border-2">
         <input
           type="text"
           className="border-0 text-xl"
-          value={l7Token}
-          onChange={(e) => updateL7Token(e.target.value)}
+          value={LGTToken}
+          onChange={(e) => updateLGTToken(e.target.value)}
         />
-        <div className="bg-slate-200 w-40 p-1 shadow-md rounded">L7 Token</div>
+        <div className="bg-slate-200 w-40 p-1 shadow-md rounded">LGT Token</div>
       </div>
       <div className="rounded flex justify-between bg-slate-50 p-3">
         <div></div>
@@ -127,10 +134,10 @@ const Trade = () => {
       </div>
 
       <div className="rounded flex justify-start  p-3 mt-2">
-        <span>1 Matic = {l7TokenPrice} L7</span>
+        <span>1 XDC = {LGTTokenPrice} LGT</span>
       </div>
 
-      {tokenBalance >= maticToken ? (
+      {tokenBalance >= xdcToken ? (
         <div
           className="rounded-2xl flex justify-center bg-red-500 hover:bg-red-400 p-3 mt-2 text-2xl text-white cursor-pointer"
           onClick={buyToken}

@@ -4,7 +4,7 @@ import {
   gameTokenAbi,
   gameTokenAddress,
   luckySevenGameAbi,
-  luckySevenGameAddress,
+  luckyGameAddress,
   providerUrl
 } from "../utils/constants";
 
@@ -17,7 +17,7 @@ export const TransactionProvider = ({ children }) => {
   const [gameToken, setGameToken] = useState(0);
   const [trading, setTrading] = useState(false);
   const [approved, setApproved] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(23);
+  const [selectedOption, setSelectedOption] = useState(48);
   const [betAmount, setBetAmount] = useState(1);
 
   // const [approved, setApproved] = useState(false);
@@ -51,7 +51,7 @@ export const TransactionProvider = ({ children }) => {
     );
 
     let approved = await gameTokenContract.approve(
-      luckySevenGameAddress,
+      luckyGameAddress,
       ethers.utils.parseEther(amt.toString())
     );
     console.log(approved);
@@ -61,7 +61,7 @@ export const TransactionProvider = ({ children }) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const luckySevenGame = new ethers.Contract(
-      luckySevenGameAddress,
+      luckyGameAddress,
       luckySevenGameAbi,
       signer
     );
@@ -74,7 +74,7 @@ export const TransactionProvider = ({ children }) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const luckySevenGame = new ethers.Contract(
-      luckySevenGameAddress,
+      luckyGameAddress,
       luckySevenGameAbi,
       signer
     );

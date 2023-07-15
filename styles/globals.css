@@ -115,6 +115,55 @@ body {
   transform: translateZ(-50px) rotateY(-45deg) rotateX(-45deg);
   transition: transform 1s;
 }
+
+.dice3 {
+  height: 100;
+  width: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-50px) rotateY(-45deg) rotateX(-45deg);
+  transition: transform 1s;
+}
+.dice4 {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-50px) rotateY(-45deg) rotateX(-45deg);
+  transition: transform 1s;
+}
+.dice5 {
+  height: 100;
+  width: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-50px) rotateY(-45deg) rotateX(-45deg);
+  transition: transform 1s;
+}
+.dice6 {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-50px) rotateY(-45deg) rotateX(-45deg);
+  transition: transform 1s;
+}
+.dice7 {
+  height: 100;
+  width: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-50px) rotateY(-45deg) rotateX(-45deg);
+  transition: transform 1s;
+}
+.dice8 {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-50px) rotateY(-45deg) rotateX(-45deg);
+  transition: transform 1s;
+}
 .panel {
   border-radius: 10px;
   width: 150px;

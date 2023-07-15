@@ -1,8 +1,13 @@
+require("@nomicfoundation/hardhat-toolbox");
 require("@nomiclabs/hardhat-waffle");
-require('dotenv').config();
-console.log(process.env.PRIVATE_KEY);
+require("dotenv").config({ path: ".env" });
+const XINFIN_NETWORK_URL = process.env.XINFIN_NETWORK_URL;
+const XINFIN_PRIVATE_KEY = process.env.XINFIN_PRIVATE_KEY;
+console.log(process.env.XINFIN_NETWORK_URL);
+console.log(process.env.XINFIN_PRIVATE_KEY);
 
 module.exports = {
+  
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
@@ -14,7 +19,7 @@ module.exports = {
     },
     apothem: {
       url: 'https://erpc.apothem.network', 
-      accounts: process.env.PRIVATE_KEY,
+      accounts: XINFIN_PRIVATE_KEY,
     },
 
   },

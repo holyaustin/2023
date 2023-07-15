@@ -7,7 +7,6 @@ import Trade from "./Trade";
 
 const BetOption = () => {
   const [loading, setLoading] = useState(false);
-
   const {
     gameToken,
     setGameToken,
@@ -59,9 +58,10 @@ const BetOption = () => {
 
   return (
     <>
-    <div className="bg-red-800">
+      <div className="bg-red-800">
+
       <h1 className="text-center text-4xl font-bold text-gradient pt-10">
-        Play 20 23
+        Play 2 0 2 3
       </h1>
       <div className="text-center text-white text-2xl text-gradient pt-10">
         Select Bet Option
@@ -70,7 +70,8 @@ const BetOption = () => {
       <div className="flex justify-center font-black">
         
         <div
-          className={`cursor-pointer p-3 m-3 flex justify-around items-center flex-col rounded-xl h-24 w-40 my-5 eth-card .white-glassmorphism ${
+            className={`cursor-pointer p-3 m-3 flex justify-around items-center flex-col rounded-xl h-24 w-40 my-5 eth-card .white-glassmorphism 
+          ${
             selectedOption == 6 ? "border-2 border-white" : "grayscale"
           }`}
           onClick={() => setSelectedOption(6)}
@@ -119,12 +120,12 @@ const BetOption = () => {
 
         <div
           className={`cursor-pointer p-3 m-3 flex justify-around items-center flex-col rounded-xl h-24 w-40 my-5 eth-card .white-glassmorphism  ${
-            selectedOption == 8 ? "border-2 border-white" : "grayscale"
+            selectedOption == 6 ? "border-2 border-white" : "grayscale"
           }`}
-          onClick={() => setSelectedOption(8)}
+          onClick={() => setSelectedOption(6)}
         >
           <div>Win 0x</div>
-          <div className="sm:text-2xl">24 To 50</div>
+          <div className="sm:text-2xl">24 To 48</div>
           <div>Win {betAmount * 0}</div>
         </div>
       </div>

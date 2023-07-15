@@ -13,7 +13,7 @@ contract GameToken is ERC20 {
     constructor(string memory name_, string memory symbol_)
         ERC20(name_, symbol_)
     {
-        _mint(msg.sender, 1000000 * (10**uint256(decimals())));
+        _mint(msg.sender, 100000000 * (10**uint256(decimals())));
     }
 }
 
