@@ -14,7 +14,7 @@ import {
 
 console.log("luckyGameAddress", luckyGameAddress)
 
-const Trade = () => {setXdcToken
+const Trade = () => {
   const { trading, setTrading, updateGameToken, gameToken } =
     useContext(TransactionProvider);
   const network = useNetwork();
